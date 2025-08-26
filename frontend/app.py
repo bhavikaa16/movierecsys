@@ -1,9 +1,10 @@
 import streamlit as st
 import requests
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-# --- 1. Setup ---
-# URL of your deployed FastAPI backend
-API_URL = "http://127.0.0.1:8000"
+API_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 # TMDb API Key setup (this part remains the same)
 try:
