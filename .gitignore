@@ -1,0 +1,8 @@
+# IDE and Virtual Environment folders
+.idea/
+.vscode/
+.venv/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
