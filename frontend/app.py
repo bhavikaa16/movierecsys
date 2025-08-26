@@ -5,11 +5,14 @@ import os
 
 API_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
+API_KEY = os.getenv("TMDB_API_KEY") 
+if not API_KEY:  
+
 # TMDb API Key setup (this part remains the same)
-try:
-    API_KEY = st.secrets["api_key"]
-except (KeyError, FileNotFoundError):
-    st.error("API key not found. Please add it to your Streamlit secrets.")
+    try:
+         API_KEY = st.secrets["api_key"]
+    except (KeyError, FileNotFoundError):
+        st.error("API key not found. Please add it to your Streamlit secrets.")
     st.stop()
 session = requests.Session()
 session.params = {"api_key": API_KEY}
@@ -68,7 +71,7 @@ if movie_titles:
             if recommendations:
                 cols = st.columns(5)
                 for i, movie in enumerate(recommendations):
-                    with cols[i]:
+                    with cols[i % 5]:
                         st.text(movie['title'])
                         st.image(movie['poster_url'])  # ✅ use backend poster_url
 
