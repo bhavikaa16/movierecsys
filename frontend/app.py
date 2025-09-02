@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import os
 
-
+st.write("DEBUG - BACKEND_URL:", os.getenv("BACKEND_URL"))
 API_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 API_KEY = os.getenv("TMDB_API_KEY") 
